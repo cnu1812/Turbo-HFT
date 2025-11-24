@@ -5,10 +5,6 @@ import struct
 import time
 import json
 
-# ==========================================
-# HELPER FUNCTIONS
-# ==========================================
-
 def get_map_id(map_name):
     """Finds the ID of a BPF map by its name using JSON."""
     try:
@@ -51,20 +47,14 @@ def read_map(map_name, key_int):
     key_bytes = struct.pack("<I", key_int)
     key_hex = " ".join(["{:02x}".format(x) for x in key_bytes])
 
-    # CRITICAL FIX: Use -j for JSON output
     cmd = f"sudo bpftool map lookup id {map_id} key hex {key_hex} -j"
     try:
         output = subprocess.check_output(cmd, shell=True).decode().strip()
         data = json.loads(output)
         
-        # bpftool returns value as a list of strings like ["0x80", "0xd1", ...]
-        # or sometimes "formatted" values. We need the raw "value" array.
         if "value" in data:
-            # value is usually a list of hex strings ["0x00", "0x00"...]
-            # Convert properly based on format
             val_list = data["value"]
             if isinstance(val_list, list):
-                # Convert ["0x80", "0x01"] -> bytes
                 hex_bytes = bytes([int(x, 16) for x in val_list])
                 return struct.unpack("<Q", hex_bytes)[0]
     except Exception as e:
@@ -75,12 +65,8 @@ def read_map(map_name, key_int):
 def clear_screen():
     os.system('clear')
 
-# ==========================================
-# MAIN INTERFACE
-# ==========================================
 
 def run_dashboard():
-    # 1. FORCE INITIALIZATION
     print("[*] Booting Engine... Setting Price to $150.00")
     update_map("config_map", 0, 150000000) 
     update_map("config_map", 1, 1)         

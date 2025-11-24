@@ -26,7 +26,6 @@ def run_exchange():
     symbol = 0x4C504141 # AAPL
     i = 0
     
-    # --- CHANGED: Infinite Loop ---
     while True: 
         now_ns = time.time_ns()
         price_dollars = random.randint(145, 152)

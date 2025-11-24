@@ -2,7 +2,7 @@
 
 **eBPF Summit Hackathon 2025 Submission**
 
-Turbo-HFT is an ultra-low-latency trading engine that runs **entirely inside the Linux Kernel networking path** using XDP (eXpress Data Path). By processing market data and executing orders at the driver level, we eliminate the overhead of the OS network stack and context switching.
+Turbo-HFT is an ultra-low-latency trading engine that runs **entirely inside the Linux Kernel networking path** using XDP. By processing market data and executing orders at the driver level, we eliminate the overhead of the OS network stack and context switching.
 
 ## 🛑 The Problem
 In modern High-Frequency Trading (HFT), the Operating System is the bottleneck.

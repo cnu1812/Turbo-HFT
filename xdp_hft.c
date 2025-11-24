@@ -9,13 +9,7 @@
 
 char LICENSE[] SEC("license") = "Dual BSD/GPL";
 
-// ============================================================
-//  eBPF MAPS DEFINITION
-// ============================================================
 
-// Map 1: CONFIGURATION
-// Key 0: Target Price (micros)
-// Key 1: Engine Status (1=ON, 0=OFF)
 struct {
     __uint(type, BPF_MAP_TYPE_ARRAY);
     __uint(max_entries, 2);
@@ -23,9 +17,7 @@ struct {
     __type(value, __u64);
 } config_map SEC(".maps");
 
-// Map 2: STATISTICS
-// Key 0: Total Shares Bought
-// Key 1: Total Money Spent (micros)
+
 struct {
     __uint(type, BPF_MAP_TYPE_ARRAY);
     __uint(max_entries, 2);
