@@ -282,6 +282,26 @@
         });
 
         socket.on('stats_update', function(data) {
+
+            // --- RECEIPT PRINTER ---
+        socket.on('trade_receipt', function(data) {
+            const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            
+            // Force open the visual log with style
+            log("------------------------------", "info");
+            log(">>> EXECUTING LIQUIDATION <<<", "buy");
+            log(`[>] SHARES SOLD:   ${data.shares}`, "info");
+            log(`[>] EXECUTION PR:  ${fmt.format(data.exec_price)}`, "info");
+            log(`[>] TOTAL REVENUE: ${fmt.format(data.revenue)}`, "info");
+            log(`[>] CAPITAL SPENT: ${fmt.format(data.cost)}`, "err"); 
+            log("------------------------------", "info");
+            
+            // The BIG Profit Line
+            log(`[=] NET PROFIT:    ${fmt.format(data.profit)}`, "buy");
+            log("------------------------------", "info");
+            
+           
+        });
             // Update Text
             document.getElementById('shares').innerText = data.shares;
             
