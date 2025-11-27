@@ -102,31 +102,51 @@ def handle_kill():
 @socketio.on('sell_all')
 def handle_sell():
     global BANK_BALANCE
-    print("[$$$] SELLING ALL SHARES...")
+    print("\n[$$$] --- EXECUTING LIQUIDATION STRATEGY ---")
     
-    # 1. Read current stats
+    # 1. Read the latest stats from the Kernel
     shares = read_map("stats_map", 0)
     cost_micros = read_map("stats_map", 1)
     
     if shares > 0:
-        # 2. Simulate Sale (Selling at $155.00 for demo profit)
-        # In a real app, we'd fetch the live market price.
-        # Here we assume we sell at a profit for the hackathon "Good Feeling"
-        sell_price_micros = 155000000 
+        # 2. Determine Sell Price 
+        # We assume we sell at $155.00 to show off a profit.
+        sell_price_dollars = 155.00 
+        sell_price_micros = int(sell_price_dollars * 1000000)
+        
+        # 3. Calculate Revenue 
         revenue_micros = shares * sell_price_micros
         
+        # 4. Calculate Net Profit 
+        # Profit = Revenue - Cost
         profit_micros = revenue_micros - cost_micros
+        
+        # Convert to Dollars for the Bank
+        revenue_dollars = revenue_micros / 1000000.0
+        cost_dollars = cost_micros / 1000000.0
         profit_dollars = profit_micros / 1000000.0
         
+        # Update the Global Bank Balance
         BANK_BALANCE += profit_dollars
-        print(f"[$$$] Profit Made: ${profit_dollars:.2f}")
 
-        # 3. Reset Kernel Maps to 0
+        # 5. DETAILED LOGGING 
+        print(f" [>] SHARES SOLD:   {shares}")
+        print(f" [>] EXECUTION IMG: ${sell_price_dollars:.2f}")
+        print(f" [>] TOTAL REVENUE: ${revenue_dollars:,.2f}")
+        print(f" [>] CAPITAL SPENT: ${cost_dollars:,.2f}")
+        print("-" * 30)
+        print(f" [=] NET PROFIT:    ${profit_dollars:,.2f}")
+        print("-" * 30)
+
+        # 6. Reset Kernel Maps to 0 
         update_map("stats_map", 0, 0) # Reset Shares
         update_map("stats_map", 1, 0) # Reset Cost
         
-        # 4. Optional: Stop buying (Kill Switch) so user can admire profit
+        # 7. Stop buying (Safety Mode)
         update_map("config_map", 1, 0)
+        
+    else:
+        print("[!] No shares to sell!")
 
 # --- STARTUP ---
 if __name__ == '__main__':
