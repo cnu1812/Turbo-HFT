@@ -60,12 +60,15 @@ sudo ip link set dev veth_hft xdpgeneric obj xdp_hft.o sec xdp
 sudo ip netns exec exchange_ns python3 exchange_sim.py
 
 ```
+### Part 2: Choose Your Interface
+#### Option A: Web Console
+```
 # Install dependencies
 `pip3 install flask flask-socketio eventlet`
 
 # Run the Server (Must be root to access BPF Maps)
 `sudo ./venv/bin/python3 web_server.py`
-
+```
 Open your browser: Go to `http://localhost:5000`
 
 #### Option B: The CLI Dashboard
