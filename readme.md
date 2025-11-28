@@ -64,10 +64,10 @@ sudo ip netns exec exchange_ns python3 exchange_sim.py
 #### Option A: Web Console
 ```
 # Install dependencies
-`pip3 install flask flask-socketio eventlet`
+pip3 install flask flask-socketio eventlet
 
 # Run the Server (Must be root to access BPF Maps)
-`sudo ./venv/bin/python3 web_server.py`
+sudo ./venv/bin/python3 web_server.py
 ```
 Open your browser: Go to `http://localhost:5000`
 
