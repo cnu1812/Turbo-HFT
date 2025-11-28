@@ -16,7 +16,6 @@
             --neon-green: #00ff41;
             --neon-red: #ff0055;
             --neon-gold: #ffd700;
-            --border-color: rgba(0, 243, 255, 0.2);
         }
 
         body {
@@ -24,201 +23,113 @@
             background-image: radial-gradient(circle at 50% 50%, #111520 0%, #050505 100%);
             color: #e0e0e0;
             font-family: 'Share Tech Mono', monospace;
-            overflow-x: hidden;
         }
 
-        /* Glitchy Header Effect */
-        h1 {
-            text-shadow: 2px 2px 0px var(--neon-red), -2px -2px 0px var(--neon-blue);
-            letter-spacing: 2px;
-        }
-
-        /* Glassmorphism Cards */
         .cyber-card {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(0, 243, 255, 0.2);
             backdrop-filter: blur(10px);
-            border-radius: 4px;
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .cyber-card:hover {
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
-            border-color: var(--neon-blue);
+            margin-bottom: 20px;
         }
 
-        .card-title {
-            color: var(--neon-blue);
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-            margin-bottom: 5px;
-        }
-
-        .stat-val {
-            font-size: 2.2em;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Specific Colors */
+        .stat-val { font-size: 2.2em; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
         .text-gold { color: var(--neon-gold) !important; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
         .text-green { color: var(--neon-green) !important; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
-        .text-red { color: var(--neon-red) !important; text-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
         .text-blue { color: var(--neon-blue) !important; }
 
         /* Buttons */
-        .btn-cyber {
-            background: transparent;
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.2s;
-        }
-        .btn-cyber:hover {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 15px var(--neon-blue);
-        }
+        .btn-cyber { background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); text-transform: uppercase; width: 100%; margin-bottom: 10px; }
+        .btn-cyber:hover { background: var(--neon-blue); color: black; box-shadow: 0 0 15px var(--neon-blue); }
+        
+        .btn-sell { background: rgba(0, 255, 65, 0.1); border: 1px solid var(--neon-green); color: var(--neon-green); width: 100%; font-size: 1.2em; padding: 15px; }
+        .btn-sell:hover { background: var(--neon-green); color: black; box-shadow: 0 0 25px var(--neon-green); }
+        
+        .btn-kill { background: transparent; border: 1px solid var(--neon-red); color: var(--neon-red); width: 100%; }
+        .btn-kill:hover { background: var(--neon-red); color: white; box-shadow: 0 0 15px var(--neon-red); }
 
-        .btn-kill {
-            border-color: var(--neon-red);
-            color: var(--neon-red);
-        }
-        .btn-kill:hover {
-            background: var(--neon-red);
-            color: white;
-            box-shadow: 0 0 20px var(--neon-red);
-        }
+        /* Progress Bars */
+        .progress { height: 25px; background: #222; margin-bottom: 5px; border-radius: 2px; }
+        .progress-bar { font-size: 0.9em; line-height: 25px; font-weight: bold; text-align: right; padding-right: 10px; transition: width 0.3s ease; }
+        .bg-xdp { background-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); color: black; }
+        .bg-user { background-color: #555; color: #ccc; }
 
-        .btn-sell {
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
-            font-size: 1.2em;
-            height: 100%;
-        }
-        .btn-sell:hover {
-            background: var(--neon-green);
-            color: black;
-            box-shadow: 0 0 25px var(--neon-green);
-        }
-
-        /* Terminal Log */
-        .terminal-window {
-            height: 200px;
-            background: #000;
-            border: 1px solid #333;
-            padding: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.8em;
-            color: #0f0;
-            overflow-y: scroll;
-            box-shadow: inset 0 0 10px #000;
-        }
+        /* Terminal */
+        .terminal-window { height: 250px; background: #000; border: 1px solid #333; padding: 10px; font-family: 'Courier New', monospace; font-size: 0.8em; color: #0f0; overflow-y: scroll; }
         .log-entry { margin-bottom: 2px; border-bottom: 1px solid #111; }
-        .log-time { color: #555; margin-right: 10px; }
-
-        /* Pulse Animation for Status */
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0); }
-        }
-        .status-online {
-            animation: pulse-green 2s infinite;
-            background-color: var(--neon-green);
-            color: black;
-            border: none;
-        }
     </style>
 </head>
 <body class="container-fluid py-4 px-4">
     
     <div class="row mb-4 align-items-center">
-        <div class="col-md-6">
-            <h1>TURBO-HFT <span style="font-size:0.4em; color:var(--neon-blue)">v3.0 // XDP ENGINE</span></h1>
+        <div class="col-6">
+            <h1>TURBO-HFT <span style="font-size:0.4em; color:var(--neon-blue)">v4.0 // LATENCY METRICS</span></h1>
         </div>
-        <div class="col-md-6 text-end">
-            <span id="status-badge" class="badge bg-secondary p-2" style="font-size: 1em;">INITIALIZING UPLINK...</span>
+        <div class="col-6 text-end">
+            <span id="status-badge" class="badge bg-secondary p-2">CONNECTING...</span>
         </div>
     </div>
 
     <div class="row g-4 mb-4">
-        <div class="col-md-3">
-            <div class="cyber-card p-3">
-                <div class="card-title">Shares Held</div>
-                <div class="stat-val text-gold" id="shares">0</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="cyber-card p-3">
-                <div class="card-title">Current Exposure</div>
-                <div class="stat-val text-blue" id="spent">$0.00</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="cyber-card p-3">
-                <div class="card-title">Algo Target</div>
-                <div class="stat-val text-white" id="target">$0.00</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="cyber-card p-3">
-                <div class="card-title">Realized Profit</div>
-                <div class="stat-val text-green" id="bank">$0.00</div>
-            </div>
-        </div>
+        <div class="col-md-3"><div class="cyber-card p-3"><small>SHARES HELD</small><div class="stat-val text-gold" id="shares">0</div></div></div>
+        <div class="col-md-3"><div class="cyber-card p-3"><small>CAPITAL DEPLOYED</small><div class="stat-val text-blue" id="spent">$0.00</div></div></div>
+        <div class="col-md-3"><div class="cyber-card p-3"><small>TARGET PRICE</small><div class="stat-val text-white" id="target">$0.00</div></div></div>
+        <div class="col-md-3"><div class="cyber-card p-3"><small>REALIZED PROFIT</small><div class="stat-val text-green" id="bank">$0.00</div></div></div>
     </div>
 
     <div class="row g-4">
         
         <div class="col-md-3">
             <div class="cyber-card p-3 h-100">
-                <h5 class="text-blue mb-4">COMMAND MODULE</h5>
-                
-                <label class="text-muted mb-2">RISK TOLERANCE</label>
-                <div class="d-grid gap-3 mb-4">
-                    <button class="btn btn-cyber py-3" onclick="setPrice(148)">
-                        LEVEL 1: $148.00
-                    </button>
-                    <button class="btn btn-cyber py-3" onclick="setPrice(155)">
-                        LEVEL 2: $155.00
-                    </button>
-                </div>
-
-                <label class="text-muted mb-2">LIQUIDATION</label>
-                <div class="d-grid gap-3 mb-4">
-                    <button class="btn btn-sell py-3" onclick="sellAll()">
-                        CASH OUT
-                    </button>
-                </div>
-
-                <hr style="border-color: #333">
-                
-                <button class="btn btn-kill w-100 py-3 mt-2" onclick="killSwitch()">
-                    ⛔ EMERGENCY STOP
-                </button>
+                <h5 class="text-blue mb-3">COMMAND</h5>
+                <button class="btn btn-cyber" onclick="setPrice(148)">Set Target: $148</button>
+                <button class="btn btn-cyber" onclick="setPrice(155)">Set Target: $155</button>
+                <br><br>
+                <button class="btn btn-sell" onclick="sellAll()">CASH OUT</button>
+                <br><br>
+                <button class="btn btn-kill" onclick="killSwitch()">EMERGENCY STOP</button>
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="cyber-card p-3 h-100">
-                <h5 class="text-blue mb-3">LATENCY & VOLUME ANALYTICS</h5>
-                <canvas id="liveChart" style="max-height: 350px;"></canvas>
+            <div class="cyber-card p-3">
+                <h5 class="text-blue mb-3">LIVE EXECUTION SPEED</h5>
+                
+                <div class="d-flex justify-content-between mb-1">
+                    <span style="color:var(--neon-blue)">KERNEL (XDP)</span>
+                    <span id="xdp-val" style="color:var(--neon-blue)">0 µs</span>
+                </div>
+                <div class="progress">
+                    <div id="xdp-bar" class="progress-bar bg-xdp" style="width: 10%"></div>
+                </div>
+
+                <div class="d-flex justify-content-between mb-1 mt-3">
+                    <span class="text-muted">USER SPACE (PYTHON)</span>
+                    <span id="user-val" class="text-muted">0 µs</span>
+                </div>
+                <div class="progress">
+                    <div id="user-bar" class="progress-bar bg-user" style="width: 10%"></div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <span class="badge bg-dark border border-success text-success p-2">
+                        SPEEDUP: <span id="speedup-factor">0.0x</span> FASTER
+                    </span>
+                    <span class="badge bg-dark border border-info text-info p-2 ms-2">
+                        TOTAL TIME SAVED: <span id="time-saved">0</span> ms
+                    </span>
+                </div>
+            </div>
+
+            <div class="cyber-card p-3">
+                <canvas id="liveChart" style="max-height: 200px;"></canvas>
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="cyber-card p-3 h-100">
-                <h5 class="text-blue mb-3">KERNEL EVENT LOG</h5>
-                <div id="terminal" class="terminal-window">
-                    <div class="log-entry"><span class="log-time">sys</span> System Ready...</div>
-                    <div class="log-entry"><span class="log-time">sys</span> XDP Hook Attached.</div>
-                    <div class="log-entry"><span class="log-time">sys</span> Waiting for market data...</div>
-                </div>
+                <h5 class="text-blue mb-3">EVENT LOG</h5>
+                <div id="terminal" class="terminal-window"></div>
             </div>
         </div>
     </div>
@@ -226,127 +137,87 @@
     <script>
         var socket = io({transports: ['websocket', 'polling']});
         
-        // --- 1. SETUP CHART ---
+        // Chart Setup
         const ctx = document.getElementById('liveChart').getContext('2d');
         const liveChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: Array(20).fill(''),
                 datasets: [{
-                    label: 'Portfolio Size',
                     data: Array(20).fill(0),
                     borderColor: '#00f3ff',
                     backgroundColor: 'rgba(0, 243, 255, 0.1)',
                     borderWidth: 2,
-                    tension: 0.4,
                     fill: true,
+                    tension: 0.4,
                     pointRadius: 0
                 }]
             },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { 
-                        grid: { color: '#222' },
-                        ticks: { color: '#666' } 
-                    },
-                    x: { display: false }
-                },
-                animation: false
-            }
+            options: { plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { grid: { color: '#222' } } }, animation: false }
         });
 
-        // --- 2. TERMINAL LOGIC ---
-        function log(msg, type="info") {
+        function log(msg, color="#0f0") {
             const term = document.getElementById('terminal');
             const div = document.createElement('div');
             div.className = "log-entry";
-            
-            const time = new Date().toLocaleTimeString().split(' ')[0];
-            let color = "#0f0";
-            if(type === 'buy') color = "var(--neon-gold)";
-            if(type === 'err') color = "var(--neon-red)";
-            
-            div.innerHTML = `<span class="log-time">${time}</span> <span style="color:${color}">${msg}</span>`;
+            div.innerHTML = `<span style="color:#555">${new Date().toLocaleTimeString().split(' ')[0]}</span> <span style="color:${color}">${msg}</span>`;
             term.appendChild(div);
-            term.scrollTop = term.scrollHeight; // Auto scroll
+            term.scrollTop = term.scrollHeight;
         }
 
-        // --- 3. SOCKET UPDATES ---
-        let lastShares = 0;
-
-        socket.on('connect', function() {
-            log("Connected to Control Plane", "info");
-            document.getElementById('status-badge').innerHTML = "UPLINK ESTABLISHED";
-        });
+        let totalTimeSaved = 0;
 
         socket.on('stats_update', function(data) {
-
-            // --- RECEIPT PRINTER ---
-        socket.on('trade_receipt', function(data) {
-            const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-            
-            // Force open the visual log with style
-            log("------------------------------", "info");
-            log(">>> EXECUTING LIQUIDATION <<<", "buy");
-            log(`[>] SHARES SOLD:   ${data.shares}`, "info");
-            log(`[>] EXECUTION PR:  ${fmt.format(data.exec_price)}`, "info");
-            log(`[>] TOTAL REVENUE: ${fmt.format(data.revenue)}`, "info");
-            log(`[>] CAPITAL SPENT: ${fmt.format(data.cost)}`, "err"); 
-            log("------------------------------", "info");
-            
-            // The BIG Profit Line
-            log(`[=] NET PROFIT:    ${fmt.format(data.profit)}`, "buy");
-            log("------------------------------", "info");
-            
-           
-        });
-            // Update Text
+            // Standard Stats
             document.getElementById('shares').innerText = data.shares;
-            
             const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
             document.getElementById('spent').innerText = fmt.format(data.spent);
             document.getElementById('target').innerText = fmt.format(data.target);
             document.getElementById('bank').innerText = fmt.format(data.bank);
 
-            // Status Logic
+            // Status Badge
             const badge = document.getElementById('status-badge');
-            if(data.status == 1) {
-                badge.className = "badge p-2 status-online";
-                badge.innerHTML = "● SYSTEM ONLINE";
-            } else {
-                badge.className = "badge bg-danger p-2";
-                badge.innerHTML = "⚠ SAFETY MODE";
-            }
+            badge.innerHTML = data.status == 1 ? "● SYSTEM ONLINE" : "⚠ SAFETY MODE";
+            badge.className = data.status == 1 ? "badge bg-success p-2" : "badge bg-danger p-2";
 
-            // Update Chart
+            // Chart
             const currentData = liveChart.data.datasets[0].data;
-            currentData.shift(); // Remove old
-            currentData.push(data.shares); // Add new
-            liveChart.update();
+            currentData.shift(); currentData.push(data.shares); liveChart.update();
 
-            // Fake "Trade" Logs if shares increased
-            if (data.shares > lastShares) {
-                const diff = data.shares - lastShares;
-                log(`XDP_TX: BUY EXEC ${diff} @ MKT`, "buy");
+            // --- LATENCY VISUALIZATION LOGIC ---
+            if (data.xdp_latency > 0) {
+                // Update Text
+                document.getElementById('xdp-val').innerText = data.xdp_latency + " µs";
+                document.getElementById('user-val').innerText = data.user_latency + " µs";
+
+                // Update Bars (Scale: 2000us = 100%)
+                let xdpPct = (data.xdp_latency / 2000) * 100;
+                let userPct = (data.user_latency / 2000) * 100;
+                document.getElementById('xdp-bar').style.width = xdpPct + "%";
+                document.getElementById('user-bar').style.width = userPct + "%";
+
+                // Update Speedup Factor
+                let speedup = (data.user_latency / data.xdp_latency).toFixed(1);
+                document.getElementById('speedup-factor').innerText = speedup + "x";
+
+                // Update Total Time Saved
+                let savedUs = data.user_latency - data.xdp_latency;
+                totalTimeSaved += (savedUs / 1000.0); // convert to ms
+                document.getElementById('time-saved').innerText = totalTimeSaved.toFixed(0);
+
+                log(`EXEC: BUY ${data.shares} @ ${data.xdp_latency}µs`, "var(--neon-blue)");
             }
-            lastShares = data.shares;
         });
 
-        // --- 4. BUTTONS ---
-        function setPrice(price) { 
-            socket.emit('set_price', {price: price}); 
-            log(`CMD: UPDATING ALGO TARGET -> $${price}`, "info");
-        }
-        function killSwitch() { 
-            socket.emit('kill_switch'); 
-            log("CMD: EMERGENCY STOP TRIGGERED", "err");
-        }
-        function sellAll() { 
-            socket.emit('sell_all'); 
-            log("CMD: LIQUIDATING ALL ASSETS...", "info");
-        }
+        socket.on('trade_receipt', function(data) {
+            const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            log(">>> LIQUIDATION <<<", "var(--neon-gold)");
+            log(`PROFIT: ${fmt.format(data.profit)}`, "var(--neon-green)");
+        });
+
+        function setPrice(p) { socket.emit('set_price', {price: p}); log(`CMD: TARGET $${p}`, "#fff"); }
+        function killSwitch() { socket.emit('kill_switch'); log("CMD: EMERGENCY STOP", "var(--neon-red)"); }
+        function sellAll() { socket.emit('sell_all'); log("CMD: CASH OUT", "var(--neon-gold)"); }
     </script>
 </body>
 </html>
