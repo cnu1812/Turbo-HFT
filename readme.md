@@ -23,7 +23,8 @@ Turbo-HFT offers dual-mode command and control. Choose your weapon:
 ### 1. The Web Terminal 
 A full-featured dashboard with real-time Chart.js visualization, scrolling event logs, and bank balance tracking.
 
-![web](https://github.com/user-attachments/assets/3cc69239-f169-424a-9988-a72d7e0bd507)
+![web](https://github.com/user-attachments/assets/95045e1e-2c4c-4358-b75c-cc99abf638d0)
+
 
 
 ### 2. The CLI Commander
